@@ -27,7 +27,7 @@ contract delivery is payment, IErrorDelivery {
      */
     struct Station {
         bytes32 station_id;
-        bytes name;
+        bytes32 name;
         uint256 total_order;
         address[] validitors;
     }
@@ -44,7 +44,7 @@ contract delivery is payment, IErrorDelivery {
     struct Order {
         bytes32 order_id;
         bytes32[] station_ids;
-        bytes name;
+        bytes32 name;
         address sender;
         address receiver;
         bool isDone;
@@ -78,7 +78,7 @@ contract delivery is payment, IErrorDelivery {
      */
     event CreateStaion( 
         bytes32 indexed station_id,
-        bytes name,
+        bytes32 name,
         uint256 total_order,
         address[] validitors
     );
@@ -95,7 +95,7 @@ contract delivery is payment, IErrorDelivery {
     event CreateOrder(
         bytes32 indexed order_id,
         bytes32[] station_ids,
-        bytes name,
+        bytes32 name,
         address indexed sender,
         address indexed receiver,
         bool isDone
@@ -115,7 +115,7 @@ contract delivery is payment, IErrorDelivery {
      * @param _validitors validitors
      */
     function createStation (
-        bytes memory _name,
+        bytes32 _name,
         uint256 _total_order,
         address[] calldata _validitors
     ) external onlyOwner {
@@ -141,7 +141,7 @@ contract delivery is payment, IErrorDelivery {
      */
     function createOrder (
         bytes32[] calldata _station_ids,
-        bytes memory _name,
+        bytes32 _name,
         address _sender,
         address _receiver
     ) external {
